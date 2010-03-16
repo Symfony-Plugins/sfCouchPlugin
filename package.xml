@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.9.0" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>sfCouchPlugin</name>
+ <channel>pear.symfony-project.com</channel>
+ <summary>CouchDB plugin</summary>
+ <description>This plugin allow you to create documents and query them in a CouchDB.</description>
+ <lead>
+  <name>Rick Pannen</name>
+  <user>rick</user>
+  <email>pannen@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2010-03-16</date>
+ <time>12:00:00</time>
+ <version>
+  <release>0.0.1</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www.gnu.org/licenses/lgpl-3.0.txt">LGPL</license>
+ <notes>
+version 0.0.1
+ </notes>
+ <contents>
+  <dir name="/">
+   <file name="README.txt" role="data"/>
+   <file name="LICENSE.txt" role="data"/>
+   <file name="config/config.php" role="data"/>
+   <file name="config/couchdb.yml" role="data"/>
+   <file name="config/couchdb/all_map.js" role="data"/>
+   <file name="lib/sfCouchConnection.class.php" role="data"/>
+   <file name="lib/sfCouchDocument.class.php" role="data"/>
+   <file name="lib/sfCouchResponse.class.php" role="data"/>
+   <file name="lib/sfCouchView.class.php" role="data"/>
+   <file name="lib/task/sfCouchRefreshViewsTask.class.php" role="data"/>
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <phprelease/>
+</package>
