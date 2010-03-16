@@ -25,13 +25,6 @@ class sfCouchDocument
     protected $requiredProperties = array();
 
     /**
-     * Indicates wheather to keep old revisions of this document or not.
-     *
-     * @var bool
-     */
-    protected $versioned = false;
-
-    /**
      * Flag, indicating if current document has already been modified
      *
      * @var bool
@@ -54,8 +47,7 @@ class sfCouchDocument
     protected static $specialProperties = array(
         '_id',
         '_rev',
-        '_attachments',
-        'revisions',
+        '_attachments'
     );
 
     /**
@@ -82,7 +74,6 @@ class sfCouchDocument
     public function __construct($id = null)
     {
         $this->storage = new StdClass();
-        $this->storage->revisions = array();
         $this->storage->_id = null;
         $this->storage->_attachments = array();
 
@@ -168,30 +159,6 @@ class sfCouchDocument
             $revision->$property = $v;
         }
 
-        /*
-        // Set special properties from response object
-        $this->storage->_rev = $response->_rev;
-        $this->storage->_id  = $response->_id;
-
-        // Set attachements array, if the response object contains attachements.
-        if ( isset( $response->_attachments ) )
-        {
-            $this->storage->_attachments = $response->_attachments;
-        }
-        */
-
-        // Check if the source document already contains a revision history and
-        // store it in this case in the document object, if the object should
-        // be versioned at all.
-        if ( $this->versioned )
-        {
-            if ( isset( $response->revisions ) )
-            {
-                $this->storage->revisions = $response->revisions;
-            }
-            // Add current revision to revision history
-            $this->storage->revisions[] = (array) $revision;
-        }
         // Document freshly loaded, so it is not modified, and not a new
         // document...
         $this->modified = false;
