@@ -26,8 +26,8 @@
  </notes>
  <contents>
   <dir name="/">
-   <file name="README.txt" role="data"/>
-   <file name="LICENSE.txt" role="data"/>
+   <file name="README" role="data"/>
+   <file name="LICENSE" role="data"/>
    <file name="config/config.php" role="data"/>
    <file name="config/couchdb.yml" role="data"/>
    <file name="config/couchdb/all_map.js" role="data"/>
