@@ -7,6 +7,7 @@ Installation
 ------------
 
 To install the plugin for a symfony project, the usual process is to use the symfony command line.
+You habe to add the alpha option as long as it's not stable.
 
     $ symfony plugin:install -s alpha sfCouchPlugin
 
