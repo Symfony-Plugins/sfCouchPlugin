@@ -1,0 +1,4 @@
+all:
+  host: localhost
+  port: 5984
+  database: test
