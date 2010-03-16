@@ -15,7 +15,7 @@ this plugin's wiki page and extract it under your project's `plugins/` directory
 
 Enable the plugin in your projects /config/ProjectConfiguration.class.php
 
-    $this->enablePlugins(array('sfDoctrinePlugin', 'sfCouchPlugin'));
+    $this->enablePlugins('sfCouchPlugin');
 
 Clear the cache to enable the autoloading to find the new classes:
 
@@ -24,9 +24,11 @@ Clear the cache to enable the autoloading to find the new classes:
 Copy the file couchdb.yml and the folder couchdb from the plugin's config folder to the project's
 config-folder (/config)
 
+
 Configuration
 -------------
 Edit the /config/couchdb.yml for your couchDB installation.
+
 
 Creating documents
 ------------------
@@ -70,6 +72,7 @@ inherits sfCouchDocument.
       
       ...	
     }
+   
    
 Views
 -----
