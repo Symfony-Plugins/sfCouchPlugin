@@ -8,12 +8,12 @@ Installation
 
 To install the plugin for a symfony project, the usual process is to use the symfony command line.
 
-    $ symfony plugin:install sfCouchPlugin
+    $ symfony plugin:install -s alpha sfCouchPlugin
 
 Alternatively, if you don't have PEAR installed, you can download the latest package attached to 
-this plugin's wiki page and extract it under your project's `plugins/` directory. 
-
-Make sure the plugin is enabled in your project's /config/ProjectConfiguration.class.php
+this plugin's wiki page and extract it under your project's `plugins/` directory. Make sure the 
+plugin is enabled in your project's /config/ProjectConfiguration.class.php if you install it
+manually!
 
     $this->enablePlugins('sfCouchPlugin');
 
