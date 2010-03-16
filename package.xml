@@ -21,6 +21,7 @@
   <api>alpha</api>
  </stability>
  <license uri="http://www.gnu.org/licenses/lgpl-3.0.txt">LGPL</license>
+ <notes/>
  <contents>
   <dir name="/">
    <file name="README.txt" role="data"/>
