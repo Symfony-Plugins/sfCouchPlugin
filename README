@@ -1,7 +1,7 @@
 sfCouchPlugin
 =============
 
-The sfCouch plugin connect symfony to the couchDB key-value store.
+The sfCouch plugin connect symfony to the CouchDB key-value store.
 
 Installation
 ------------
@@ -21,19 +21,19 @@ Clear the cache to enable the autoloading to find the new classes:
 
     $ php symfony cc
 
-Copy the file couchdb.yml and the folder couchdb from the plugin's config folder to the project's
+Copy the file CouchDB.yml and the folder CouchDB from the plugin's config folder to the project's
 config-folder (/config)
 
 
 Configuration
 -------------
-Edit the /config/couchdb.yml for your couchDB installation.
+Edit the /config/CouchDB.yml for your CouchDB installation.
 
 
 Creating documents
 ------------------
 
-To create a new couchDB document you can just instanciate a sfCouchDocument, set some key/value pairs
+To create a new CouchDB document you can just instanciate a sfCouchDocument, set some key/value pairs
 and save it.
 
     $newDoc = new sfCouchDocument();
@@ -55,7 +55,7 @@ Files can be attached to a document with:
 Only the first parameter is mandatory. If no fileName is given, the Name is derived
 from the file itself. If no mimetype is given it'll be 'application/octet-stream'.
 
-Files can be loaded from counch with:
+Attachments can be loaded from a CouchDB document with:
 
     $tempFilePath = $newDoc->getFile($fileName);
 
@@ -77,7 +77,7 @@ inherits sfCouchDocument.
 Views
 -----
 
-To create a mapping just put a javascript file in the folder /config/couchdb
+To create a mapping just put a javascript file in the folder /config/CouchDB
 that is named VIEWNAME_map.js. If you also need a reduce function create another
 file named named VIEWNAME_reduce.js.
 
@@ -88,7 +88,7 @@ javascript you have to call the task couch:refreshViews.
     
 Then call the view with sfCouchView::query($viewName, [$options]). The first parameter
 ist the VIEWNAME from the javascript files. The optional second parameter is an array 
-with the couchdb query options [See couchdb wiki](http://wiki.apache.org/couchdb/Introduction_to_CouchDB_views).
+with the CouchDB query options [See CouchDB wiki](http://wiki.apache.org/CouchDB/Introduction_to_CouchDB_views).
 
 	$options = array('group' => true, 'key' => 'test');
     $result = sfCouchView::query('VIEWNAME', $options);
