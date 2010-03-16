@@ -345,8 +345,6 @@ class sfCouchDocument
                 json_encode( $this->storage )
             );
         }
-        
-        print_r($response);
 		
         if (empty($response)) {
         	return null;
@@ -416,13 +414,13 @@ class sfCouchDocument
      * Get the contents of an attached file as a sfCouchDataResponse.
      *
      * @param string $fileName
-     * @return sfCouchDataResponse
+     * @return String tempFileName
      */
     public function getFile( $fileName )
     {
         if ( !isset( $this->storage->_attachments[$fileName] ) )
         {
-            throw new sfException( $fileName );
+            return null;
         }
 
         $db = sfCouchConnection::getInstance();
@@ -431,6 +429,13 @@ class sfCouchDocument
             null, true
         );
 
-        return $response;
+        if (is_null($response)) {
+        	return null;
+        }
+        
+        $fileName = tempnam(sys_get_temp_dir(), 'sfCouch_');
+		file_put_contents($fileName, $response);
+        
+        return $fileName;
     }
 }

@@ -364,9 +364,12 @@ class sfCouchConnection
             	return null;
            		break;
         }
+        
+        if ($headers['content-type'] == 'application/octet-stream') {
+        	return ($body);
+        }
 
         // Create repsonse object from couch db response
         return sfCouchResponse::parse( $headers, $body);
     }
 }
-

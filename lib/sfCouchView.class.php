@@ -1,6 +1,6 @@
 <?php
 /**
- * Wrapper base for views in the database
+ * Wrapper for views in the database
  *
  * @package Core
  * @version $Revision: 94 $
@@ -23,7 +23,7 @@ class sfCouchView
      * @param array $options
      * @return string
      */
-    private static function buildViewQuery( array $options )
+    private static function buildViewQuery(array $options)
     {
         // Return empty query string, if no options has been passed
         if ( $options === array() )
@@ -112,7 +112,7 @@ class sfCouchView
 
         // Always refresh the configuration in debug mode
         if(sfConfig::get('sf_debug')) {
-        	self::refreshDesignDoc();
+        	self::checkDesignDoc($view);
         }
         
         try
@@ -126,7 +126,7 @@ class sfCouchView
             // If we aren't in debug mode Ensure view has been created properly and then try to execute
             // the query again. If it still fails, there is most probably a
             // real problem.
-            if (!sfConfig::get('sf_debug') && self::refreshDesignDoc()) {
+            if (!sfConfig::get('sf_debug') && self::checkDesignDoc($view)) {
             	$response = $db->get($url);
             }
         }
@@ -144,7 +144,7 @@ class sfCouchView
      *
      * @return void
      */
-    public static function refreshDesignDoc()
+    public static function checkDesignDoc($checkView = null)
     {
     	$designDoc = new sfCouchDocument(self::viewName);
     	
@@ -155,6 +155,15 @@ class sfCouchView
     	$designDoc->views = self::getViewsFromConfig($mapDir);
 
         $designDoc->save();
+        
+        if ($checkView) {
+        	if (!array_key_exists($checkView, $designDoc->views)) {
+            	throw new sfException("The view '$checkView' doesn't exist. 
+            		Create it in /config/couchdb/".$checkView."_map.js");
+            }
+        }
+        
+        return true;
     }
     
     private static function getViewsFromConfig($dir)
