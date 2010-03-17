@@ -47,7 +47,8 @@ class sfCouchView
                     break;
 
                 case 'startkey_docid':
-                    // The docidstartkey is handled differntly then the other
+                case 'endkey_docid':
+                    // The startkey and endkey is handled different than the other
                     // keys and is just passed as a string, because it always
                     // is and can only be a string.
                     $queryString .= $key . '=' . urlencode( (string) $value );
@@ -56,12 +57,22 @@ class sfCouchView
                 case 'group':
                 case 'update':
                 case 'descending':
-                    // These two values may only contain boolean values, passed
+                case 'include_docs':
+                case 'inclusive_end':
+                case 'reduce':
+                    // These values may only contain boolean values, passed
                     // as "true" or "false". We just perform a typical PHP
                     // boolean typecast to transform the values.
                     $queryString .= $key . '=' . ( $value ? 'true' : 'false' );
                     break;
 
+                case 'stale':
+                	// This can only be 'ok'
+                	if ($value) {
+                		$queryString .= $key . '=ok'; 
+                	}
+                	break;
+                    
                 case 'skip':
                 case 'group_level':
                     // Theses options accept integers defining the limits of
@@ -77,7 +88,6 @@ class sfCouchView
                     break;
 
                 default:
-                    throw new sfException( $key );
             }
 
             $queryString .= '&';

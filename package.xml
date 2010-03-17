@@ -13,7 +13,7 @@
  <date>2010-03-17</date>
  <time>23:00:00</time>
  <version>
-  <release>0.1.0</release>
+  <release>0.1.1</release>
   <api>1.0.0</api>
  </version>
  <stability>
@@ -30,7 +30,9 @@
    <file name="LICENSE" role="data"/>
    <file name="config/config.php" role="data"/>
    <file name="config/couchdb.yml" role="data"/>
-   <file name="config/couchdb/all_map.js" role="data"/>
+   <file name="config/couchdb/alldocs_map.js" role="data"/>
+   <file name="config/couchdb/example_map.js" role="data"/>
+   <file name="config/couchdb/example_reduce.js" role="data"/>
    <file name="lib/sfCouchConnection.class.php" role="data"/>
    <file name="lib/sfCouchDocument.class.php" role="data"/>
    <file name="lib/sfCouchResponse.class.php" role="data"/>
@@ -56,6 +58,22 @@
  </dependencies>
  <phprelease/>
  <changelog>
+   <release>
+    <version>
+      <release>0.1.1</release>
+      <api>1.0.0</api>
+    </version>
+    <stability>
+     <release>beta</release>
+     <api>beta</api>
+    </stability>
+    <license uri="http://www.gnu.org/licenses/lgpl-3.0.txt">LGPL</license>
+    <date>2010-03-17</date>
+    <notes>
+      * changes to the readme file
+      * added CouchDB 0.9 querying options
+    </notes>
+  </release>
   <release>
     <version>
       <release>0.1.0</release>
@@ -70,6 +88,7 @@
     <notes>
       * changes to the readme file
       * added a map/reduce example
+      * more verbose exceptions
     </notes>
   </release>
 </changelog>

@@ -99,8 +99,8 @@ ist the VIEWNAME from the javascript files.
 The optional second parameter is an array with the CouchDB query options 
 [See CouchDB wiki](http://wiki.apache.org/couchdb/HTTP_view_API#Querying_Options).
 
-	$options = array('group' => true, 'key' => 'test');
-    $result = sfCouchView::query('VIEWNAME', $options);
+	$options = array('reduce' => false, 'include_docs' => true);
+    $result = sfCouchView::query('example', $options);
     
 The result is an sfCouchResponse object that holds the returnes arrays. 
 You'll be interested in $result->rows.
@@ -110,4 +110,4 @@ TODO
 ----
 
  * Implement support for standalone files in CouchDB
- * Implement temporary views 
+ * Implement multiple key requests
