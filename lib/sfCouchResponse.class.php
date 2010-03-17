@@ -59,7 +59,7 @@ class sfCouchResponse
         // Check if such an property exists at all
         if ( !isset( $this->properties[$property] ) )
         {
-            throw new sfException( $property );
+            throw new exception('sfCouch: ' . $property );
         }
 
         return $this->properties[$property];
@@ -111,7 +111,7 @@ class sfCouchResponse
     public static function parse( array $headers, $body)
     {
         $response = json_decode( $body, true );
-
+        
         // To detect the type of the response from the couch DB server we use
         // the response status which indicates the return type.
         switch ( $headers['status'] )
@@ -146,7 +146,7 @@ class sfCouchResponse
                 // All other unhandled HTTP codes are for now handled as an error.
                 // This may not be true, as lots of other status code may be used
                 // for valid repsonses.
-                throw new sfException( $response['error']  . ': ' . $response['reason']);
+                throw new exception('sfCouch: ' . $response['error']  . ': ' . $response['reason']);
         }
     }
 }

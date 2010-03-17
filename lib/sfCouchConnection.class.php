@@ -93,7 +93,7 @@ class sfCouchConnection
                 break;
 
             default:
-                throw new sFException( $option );
+                throw new exception('sfCouch: ' . $options);
         }
     }
 
@@ -142,7 +142,7 @@ class sfCouchConnection
         $method = strtoupper( $method );
         if ( !isset( self::$allowedMethods[$method] ) )
         {
-            throw new sfException('Unsupported request method: ' . $method);
+            throw new exception('sfCouch: Unsupported request method: ' . $method);
         }
 
         // Check if required parameter containing the path is set and valid.
@@ -176,7 +176,7 @@ class sfCouchConnection
              ( ( $this->connection = fsockopen( $this->options['ip'], $this->options['port'], $errno, $errstr ) ) === false ) )
         {
             // This is a bit hackisch...
-            throw new sfException("Could not connect to couchdb server");
+            throw new exception("sfCouch: Could not connect to couchdb server");
         }
     }
 
@@ -231,7 +231,7 @@ class sfCouchConnection
      * @param bool $raw
      * @return sfCouchResponse
      */
-    protected function request( $method, $path, $data)
+    protected function request($method, $path, $data)
     {
         // Try establishing the connection to the server
         $this->checkConnection();
@@ -269,7 +269,7 @@ class sfCouchConnection
         // leave handling to the user for now.
         if ( $line === false )
         {
-            throw new sfException( 'Connection abborted unexpectedly (nonexisting Database?)');
+            throw new exception('sfCouch: Connection abborted unexpectedly (nonexisting Database?)');
         }
 
         do {
@@ -349,7 +349,7 @@ class sfCouchConnection
             fwrite( $fp, "\n" . $rawHeaders . "\n" . $body . "\n" );
             fclose( $fp );
         }
-
+        
         // Handle some response state as special cases
         switch ( $headers['status'] )
         {
