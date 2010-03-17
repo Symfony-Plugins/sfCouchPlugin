@@ -10,15 +10,15 @@
   <email>pannen@gmail.com</email>
   <active>yes</active>
  </lead>
- <date>2010-03-16</date>
- <time>12:00:00</time>
+ <date>2010-03-17</date>
+ <time>23:00:00</time>
  <version>
-  <release>0.0.8</release>
+  <release>0.1.0</release>
   <api>1.0.0</api>
  </version>
  <stability>
-  <release>alpha</release>
-  <api>alpha</api>
+  <release>beta</release>
+  <api>beta</api>
  </stability>
  <license uri="http://www.gnu.org/licenses/lgpl-3.0.txt">LGPL</license>
  <notes>
@@ -58,17 +58,18 @@
  <changelog>
   <release>
     <version>
-      <release>0.0.8</release>
+      <release>0.1.0</release>
       <api>1.0.0</api>
     </version>
     <stability>
-     <release>alpha</release>
-     <api>alpha</api>
+     <release>beta</release>
+     <api>beta</api>
     </stability>
     <license uri="http://www.gnu.org/licenses/lgpl-3.0.txt">LGPL</license>
-    <date>2010-03-16</date>
+    <date>2010-03-17</date>
     <notes>
       * changes to the readme file
+      * added a map/reduce example
     </notes>
   </release>
 </changelog>
