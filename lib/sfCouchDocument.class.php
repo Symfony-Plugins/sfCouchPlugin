@@ -95,6 +95,16 @@ class sfCouchDocument
     {
         return $this->storage->$property;
     }
+    
+    /**
+     * Is this a ne document?
+     *
+     * @return boolean
+     */
+    public function isNew()
+    {
+        return $this->newDocument;
+    }
 
     /**
      * Set a property value

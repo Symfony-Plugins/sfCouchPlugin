@@ -146,7 +146,7 @@ class sfCouchResponse
                 // All other unhandled HTTP codes are for now handled as an error.
                 // This may not be true, as lots of other status code may be used
                 // for valid repsonses.
-                throw new sfException( $headers['status'] );
+                throw new sfException( $response['error']  . ': ' . $response['reason']);
         }
     }
 }
