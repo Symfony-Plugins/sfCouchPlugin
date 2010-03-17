@@ -78,10 +78,13 @@ inherits sfCouchDocument.
 Views
 -----
 
+[Introduction to views](http://wiki.apache.org/CouchDB/Introduction_to_CouchDB_views)
+
 To create a view just put a javascript file in the folder /config/CouchDB
 that is named VIEWNAME_map.js. If you also need a reduce function create another
-file named named VIEWNAME_reduce.js. There's a very simple example 'all_map.js' in
-the distribution.
+file named named VIEWNAME_reduce.js. There's an example view 'alldocs' in the 
+distribution that returns all documents in the db and a map/reduce view called
+'example' that outputs the count of the digits 0-9 in the ids of your documents.
 
 Note: In production env the views don't get updated automatically. If you change a
 javascript you have to call the task couch:refreshViews.
@@ -89,14 +92,18 @@ javascript you have to call the task couch:refreshViews.
     $ php symfony couch:refreshViews
     
 Then call the view with sfCouchView::query($viewName, [$options]). The first parameter
-ist the VIEWNAME from the javascript files. The optional second parameter is an array 
-with the CouchDB query options [See CouchDB wiki](http://wiki.apache.org/CouchDB/Introduction_to_CouchDB_views).
+ist the VIEWNAME from the javascript files. 
+
+    $result = sfCouchView::query('alldocs');
+
+The optional second parameter is an array with the CouchDB query options 
+[See CouchDB wiki](http://wiki.apache.org/couchdb/HTTP_view_API#Querying_Options).
 
 	$options = array('group' => true, 'key' => 'test');
     $result = sfCouchView::query('VIEWNAME', $options);
     
-The result is an sfCouchResponse object. You'll be interested in
-$result->total_rows $result->rows.
+The result is an sfCouchResponse object that holds the returnes arrays. 
+You'll be interested in $result->rows.
 
 
 TODO

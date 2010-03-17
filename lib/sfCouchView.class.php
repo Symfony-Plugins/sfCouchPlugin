@@ -18,7 +18,7 @@ class sfCouchView
      *
      * Validates and transformed paased options to limit the view data, to fit
      * the specifications in the HTTP view API, documented at:
-     * http://www.couchdbwiki.com/index.php?title=HTTP_View_API#Querying_Options
+     * http://wiki.apache.org/couchdb/HTTP_view_API#Querying_Options
      *
      * @param array $options
      * @return string
