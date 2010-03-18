@@ -1,4 +1,4 @@
 all:
-  host: localhost
-  port: 5984
-  database: test
+	host: localhost
+	port: 5984
+	database: test
