@@ -111,7 +111,7 @@ class sfCouchResponse
     public static function parse( array $headers, $body)
     {
         $response = json_decode( $body, true );
-        
+
         // To detect the type of the response from the couch DB server we use
         // the response status which indicates the return type.
         switch ( $headers['status'] )
@@ -146,7 +146,11 @@ class sfCouchResponse
                 // All other unhandled HTTP codes are for now handled as an error.
                 // This may not be true, as lots of other status code may be used
                 // for valid repsonses.
-                throw new exception('sfCouch: ' . $response['error']  . ': ' . $response['reason']);
+                if ($response) {
+                  throw new exception('sfCouch: ' . $response['error']  . ': ' . $response['reason']);
+                } else {
+                  throw new exception('sfCouch: ' . $body);
+                }
         }
     }
 }

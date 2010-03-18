@@ -349,7 +349,7 @@ class sfCouchConnection
             fwrite( $fp, "\n" . $rawHeaders . "\n" . $body . "\n" );
             fclose( $fp );
         }
-        
+
         // Handle some response state as special cases
         switch ( $headers['status'] )
         {
@@ -359,14 +359,14 @@ class sfCouchConnection
             case 307:
                 $path = parse_url( $headers['location'], PHP_URL_PATH );
                 return $this->request( $method, $path, $data );
-            	break;
+              break;
             case 404:
-            	return null;
-           		break;
+              return null;
+               break;
         }
-        
-        if ($headers['content-type'] == 'application/octet-stream') {
-        	return ($body);
+
+        if (substr($headers['content-type'], 0, 5) != 'text/') {
+          return ($body);
         }
 
         // Create repsonse object from couch db response
