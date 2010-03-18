@@ -8,20 +8,25 @@ function (keys, values, rereduce) {
 	for (var i=0; i<10; i++) {
 		counts[i] = 0;
 	}
-	
+
     // This is the reduce phase, we are reducing over emitted values from
     // the map functions.
     for(var i in values) {
-      if (!rereduce) {
-        var chars = values[i].split("");
+      if (rereduce) {
+        var chars = values[i];
+        for (var i in chars) {
+            counts[i] = counts[i]+chars[i];
+        }
       } else {
-        var chars = values[i]; 
-      }
-      for (var j=0; j<chars.length; j++) {
-        if (chars[j] < 10) {
-          counts[chars[j]] = counts[chars[j]]+1;
+        var chars = values[i].toString().split("");
+        for (var j=0; j<chars.length; j++) {
+        	char = chars[j];
+        	if (char < 10) {
+        		counts[char] = counts[char]+1;
+        	}
         }
       }
+      
     };
 
     // the reduce result. It contains enough information to be rereduced
