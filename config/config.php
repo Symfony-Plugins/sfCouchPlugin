@@ -6,7 +6,7 @@
 
 $configCache = $this->getConfigCache();
 
-$couch_config_file = sfConfig::get('sf_config_dir').'/couchdb.yml';
+$couch_config_file = 'couchdb.yml';
 $configCache->registerConfigHandler($couch_config_file, 'sfDefineEnvironmentConfigHandler', array (
 	'prefix' => 'couchdb_',
 ));

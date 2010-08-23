@@ -326,7 +326,10 @@ class sfCouchDocument
         if (empty($response)) {
         	return null;
         }
-        return $this->storage->_id = $response->id;
+        
+        $this->storage->_id = $response->id;
+        $this->storage->_rev = $response->rev;
+        return true;
     }
 
     /**
